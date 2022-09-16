@@ -33,6 +33,7 @@ void Controller::updateEvent(std::string strBtn)
 
     if (strBtn == "TempHighError") {
         service->updateState("TempHighError");
+        motorService->updateState("TempHighError");
     }
    
 }

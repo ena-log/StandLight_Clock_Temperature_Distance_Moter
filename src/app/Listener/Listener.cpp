@@ -49,7 +49,7 @@ void Listener::checkEvent()
         {
             controller->updateTempHumid(dhtData);
 
-            if(dhtData.Temp >= 28)
+            if(dhtData.Temp >= 27)
             {
                 controller->updateEvent("TempHighError");
             }

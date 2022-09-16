@@ -51,7 +51,7 @@ int main()
     TempHumidView tempHumidView(&lcd);
     ClockView clockView(&lcd);
     MotorView motorView(&motor);
-    Service service(&view);
+    Service service(&view, &motorView);
     ClockService clockService(&clockView);
     TempHumidService tempHumidService(&tempHumidView);
     MotorService motorService(&motorView);
