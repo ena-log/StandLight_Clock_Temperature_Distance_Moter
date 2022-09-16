@@ -1,11 +1,11 @@
 #include "Controller.h"
 
-Controller::Controller(Service *serv, ClockService *clockServ, TempHumidService *tempHumidService)
+Controller::Controller(Service *serv, ClockService *clockServ, TempHumidService *tempHumidService, MotorService *motorService)
 {
     service = serv;
     clockService = clockServ;
-    lightState = LIGHT_OFF;
     this->tempHumidService = tempHumidService;
+    this->motorService = motorService;
 }
 
 Controller::~Controller()
@@ -23,8 +23,16 @@ void Controller::updateEvent(std::string strBtn)
         service->updateState("powerButton");
     }
 
+    if (strBtn == "motorButton") {
+        motorService->updateState("motorButton");
+    }
+
     if (strBtn == "clockUpdate") {
         clockService->updateEvent();
+    }
+
+    if (strBtn == "TempHighError") {
+        service->updateState("TempHighError");
     }
    
 }

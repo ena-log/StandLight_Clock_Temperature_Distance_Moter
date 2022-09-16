@@ -55,25 +55,6 @@ void View::lightView()
 
 }
 
-void View::TempWarning()
-{
-    char buff[30];
-    char buff2[30];
-
-
-        sprintf(buff, "Light OFF");
-        sprintf(buff2, "warning");
-        light1->Off();
-        light2->Off();
-        light3->Off();
-        light4->Off();
-        light5->Off();
-
-
-    lcd->WriteStringXY(0, 0, buff);
-    lcd->WriteStringXY(1, 9, buff2);
-}
-
 void View::lightOn_1()
 {
     //Toggle

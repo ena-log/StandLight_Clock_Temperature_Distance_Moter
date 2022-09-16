@@ -1,10 +1,11 @@
 #include "Listener.h"
 #include <wiringPi.h>
 
-Listener::Listener(Button *modeButton, Button *powerButton, Controller *control, ClockCheck *clock, DHT11 *dht11, UltraSonic *ultraSonic)
+Listener::Listener(Button *modeButton, Button *powerButton, Button *motorButton, Controller *control, ClockCheck *clock, DHT11 *dht11, UltraSonic *ultraSonic)
 {
     this->modeButton = modeButton;
     this->powerButton = powerButton;
+    this->motorButton = motorButton;
     controller = control;
     clockcheck = clock;
     this->dht11 = dht11;
@@ -27,6 +28,11 @@ void Listener::checkEvent()
         controller->updateEvent("powerButton");
     }
 
+    if (motorButton->getState() == RELEASE_ACTIVE)
+    {
+        controller->updateEvent("motorButton");
+    }
+
     //detect even, when occurred time(clock)
     if (clockcheck->isUpdate())
     {
@@ -42,6 +48,11 @@ void Listener::checkEvent()
         if(!dhtData.error)
         {
             controller->updateTempHumid(dhtData);
+
+            if(dhtData.Temp >= 28)
+            {
+                controller->updateEvent("TempHighError");
+            }
         }
     }
 

@@ -6,6 +6,7 @@ Service::Service(View *viewer)
     lightState = LIGHT_OFF;
     bDistanceLight = false;
     offCount = 0;
+    motorState = MOTOR_OFF;
 }
 
 Service::~Service()
@@ -28,7 +29,8 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_2;
             }
-            if (strState == "powerButton") {
+            if (strState == "powerButton" || strState == "TempHighError") {
+                motorState = MOTOR_ON;
                 lightState = LIGHT_OFF;
             }
             if(bDistanceLight){     //거리 범위 안
@@ -43,7 +45,8 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_3;
             }
-            if (strState == "powerButton") {
+            if (strState == "powerButton" || strState == "TempHighError") {
+                motorState = MOTOR_ON;
                 lightState = LIGHT_OFF;
             }
             if(bDistanceLight){     //거리 범위 안
@@ -58,8 +61,9 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_4;
             }
-            if (strState == "powerButton") {
+            if (strState == "powerButton" || strState == "TempHighError") {
                 lightState = LIGHT_OFF;
+                motorState = MOTOR_ON;
             }
             if(bDistanceLight){     //거리 범위 안
                 view->setState(lightState);
@@ -73,8 +77,9 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_5;
             }
-            if (strState == "powerButton") {
+            if (strState == "powerButton" || strState == "TempHighError") {
                 lightState = LIGHT_OFF;
+                motorState = MOTOR_ON;
             }
             if(bDistanceLight){     //거리 범위 안
                 view->setState(lightState);
@@ -88,8 +93,9 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_OFF;
             }
-            if (strState == "powerButton") {
+            if (strState == "powerButton" || strState == "TempHighError") {
                 lightState = LIGHT_OFF;
+                motorState = MOTOR_ON;
             }
             if(bDistanceLight){     //거리 범위 안
                 view->setState(lightState);
@@ -99,6 +105,7 @@ void Service::updateState(std::string strState)
             }
         break;
     }
+    
 }
 
 void Service::updateDistance(int distance)
@@ -119,5 +126,5 @@ void Service::updateDistance(int distance)
         view->setState(lightState);
     }
 
-    printf("distance : %d, offCount : %d\n", distance, offCount);
+    // printf("distance : %d, offCount : %d\n", distance, offCount);
 }

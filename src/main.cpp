@@ -1,5 +1,6 @@
 #include <iostream>
 #include <wiringPi.h>
+#include <softPwm.h>
 #include "Button.h"
 #include "Led.h"
 #include "Listener.h"
@@ -15,6 +16,9 @@
 #include "TempHumidService.h"
 #include "TempHumidView.h"
 #include "UltraSonic.h"
+#include "Motor.h"
+#include "MotorService.h"
+#include "MotorView.h"
 
 // #include <time.h>
 
@@ -31,7 +35,8 @@ int main()
     // struct tm *timeData;
     
     Button modeButton(27);
-    Button powerButton(28);  
+    Button powerButton(28);
+    Button motorButton(29);  
     ClockCheck clockCheck;
     Led led1(21);
     Led led2(22);
@@ -40,29 +45,24 @@ int main()
     Led led5(25);
     DHT11 dht(7);
     UltraSonic ultraSonic(5, 4);    //trig, echo
+    Motor motor(26);
     LCD lcd(new I2C("/dev/i2c-1", 0x27));
     View view(&led1, &led2, &led3, &led4, &led5, &lcd);
     TempHumidView tempHumidView(&lcd);
     ClockView clockView(&lcd);
+    MotorView motorView(&motor);
     Service service(&view);
     ClockService clockService(&clockView);
     TempHumidService tempHumidService(&tempHumidView);
-    Controller control(&service, &clockService, &tempHumidService);
-    Listener listener(&modeButton, &powerButton, &control, &clockCheck, &dht, &ultraSonic);
+    MotorService motorService(&motorView);
+    Controller control(&service, &clockService, &tempHumidService, &motorService);
+    Listener listener(&modeButton, &powerButton, &motorButton, &control, &clockCheck, &dht, &ultraSonic);
     
     while (1)
     {
         listener.checkEvent();
-        if(dht.dhtData.Temp < 28)
-        {
-            // cout << "11" << endl;
-            view.lightView();        
-        }
-        else
-        {
-            // cout << "22" << endl;
-            view.TempWarning();
-        }
+        view.lightView();
+        motorView.motorView();
 
         // <time test>
         // timeSec = time(NULL);

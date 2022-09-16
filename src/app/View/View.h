@@ -25,14 +25,12 @@ public:
     void lightView();
     void lightOn();
     void lightOff();
-
     void lightOn_1();
     void lightOn_2();
     void lightOn_3();
     void lightOn_4();
     void lightOn_5();
-
-    void TempWarning();
+    
 };
 
 #endif /* __VIEW_H__ */

@@ -4,7 +4,7 @@
 #include <string>
 #include "View.h"
 #include "LightState.h"
-
+#include "motorState.h"
 
 class Service
 {
@@ -13,6 +13,8 @@ private:
     View *view;
     bool bDistanceLight;
     int offCount;
+
+    int motorState;
 
 public:
     Service(View *viewer);
