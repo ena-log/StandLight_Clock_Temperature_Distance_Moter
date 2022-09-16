@@ -1,7 +1,6 @@
 #ifndef MOTORSERVICE_H
 #define MOTORSERVICE_H
 
-#include <string>
 #include "MotorView.h"
 #include "motorState.h"
 
