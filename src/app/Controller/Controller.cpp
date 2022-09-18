@@ -27,6 +27,10 @@ void Controller::updateEvent(std::string strBtn)
         motorService->updateState("motorButton");
     }
 
+    if (strBtn == "clockButton") {
+        clockService->updateState("clockButton");
+    }
+
     if (strBtn == "clockUpdate") {
         clockService->updateEvent();
     }

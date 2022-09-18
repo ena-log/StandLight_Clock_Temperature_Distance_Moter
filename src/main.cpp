@@ -36,7 +36,8 @@ int main()
     
     Button modeButton(27);
     Button powerButton(28);
-    Button motorButton(29);  
+    Button motorButton(29);
+    Button clockButton(2);
     ClockCheck clockCheck;
     Led led1(21);
     Led led2(22);
@@ -56,7 +57,8 @@ int main()
     TempHumidService tempHumidService(&tempHumidView);
     MotorService motorService(&motorView);
     Controller control(&service, &clockService, &tempHumidService, &motorService);
-    Listener listener(&modeButton, &powerButton, &motorButton, &control, &clockCheck, &dht, &ultraSonic);
+    Listener listener(&modeButton, &powerButton, &motorButton, &clockButton,
+        &control, &clockCheck, &dht, &ultraSonic);
     
     while (1)
     {

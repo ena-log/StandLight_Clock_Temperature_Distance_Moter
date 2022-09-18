@@ -17,3 +17,4 @@ void ClockView::updateTime(struct tm *timeData)
     sprintf(buff, "%02d:%02d:%02d", timeData->tm_hour, timeData->tm_min, timeData->tm_sec);
     lcd->WriteStringXY(1,0, buff);
 }
+

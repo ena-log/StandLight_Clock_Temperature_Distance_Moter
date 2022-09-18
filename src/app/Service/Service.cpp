@@ -30,7 +30,10 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_2;
             }
-            if (strState == "powerButton" || strState == "TempHighError") {
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            if (strState == "TempHighError") {
                 lightState = LIGHT_OFF;
                 motorState = MOTOR_ON;
                 motorView->setState(motorState);
@@ -47,7 +50,10 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_3;
             }
-            if (strState == "powerButton" || strState == "TempHighError") {
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            if (strState == "TempHighError") {
                 lightState = LIGHT_OFF;
                 motorState = MOTOR_ON;
                 motorView->setState(motorState);
@@ -64,7 +70,10 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_4;
             }
-            if (strState == "powerButton" || strState == "TempHighError") {
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            if (strState == "TempHighError") {
                 lightState = LIGHT_OFF;
                 motorState = MOTOR_ON;
                 motorView->setState(motorState);
@@ -81,7 +90,10 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_5;
             }
-            if (strState == "powerButton" || strState == "TempHighError") {
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            if (strState == "TempHighError") {
                 lightState = LIGHT_OFF;
                 motorState = MOTOR_ON;
                 motorView->setState(motorState);
@@ -98,7 +110,10 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_OFF;
             }
-            if (strState == "powerButton" || strState == "TempHighError") {
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            if (strState == "TempHighError") {
                 lightState = LIGHT_OFF;
                 motorState = MOTOR_ON;
                 motorView->setState(motorState);
