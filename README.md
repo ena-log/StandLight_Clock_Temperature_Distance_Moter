@@ -46,4 +46,7 @@ UML CLASS DIAGRAM
   <p>
 </ol>
 
+# HW
+![StandLight_HW_Result](https://user-images.githubusercontent.com/103064030/190936338-c968fd54-a5c0-4506-8dda-f31644cf814e.PNG)
+![StandLight_Motor(PWM)_Data](https://user-images.githubusercontent.com/103064030/190936343-8902968d-c522-4f74-80fb-808203ebcbd9.PNG)
 
